@@ -27,6 +27,7 @@ namespace KASHOP.Areas.Admin.Controllers
                     Id = product.Id,
                     Name = product.Name,
                     Image = $"/images/{product.Image}",
+                    Price = product.Price,
                     CategoryName = product.Category.Name
                 };
                 productsVM.Add(vm);

@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace KASHOP.Areas.User.Controllers
 {
     [Area("User")]
-    public class HomeController : Controller
+    public class ProductsController : Controller
     {
         ApplicationDbContext context = new ApplicationDbContext();
         public IActionResult Index()
@@ -31,7 +31,6 @@ namespace KASHOP.Areas.User.Controllers
                 };
                 productsVM.Add(vm);
             }
-            ViewBag.categories = context.Categories.ToList();
             return View(productsVM);
         }
     }
