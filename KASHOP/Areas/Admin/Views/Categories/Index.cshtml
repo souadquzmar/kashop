@@ -29,8 +29,8 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 10px" scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col" style="width: 30px">Action</th>
+                                        <th scope="col" >Name</th>
+                                        <th scope="col" style="width: 180px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,7 +40,10 @@
                                             <td>@category.Id</td>
                                             <td>@category.Name</td>
                                             <td>
+                                                <div class="d-flex gap-1">
                                                 <a asp-controller="categories" asp-action="remove" asp-route-id=@category.Id class="btn btn-outline-danger">Delete</a>
+                                                <a asp-controller="categories" asp-action="edit" asp-route-id=@category.Id class="btn btn-outline-primary">Edit</a>
+                                                </div>
                                             </td>
                                         </tr>
                                     }

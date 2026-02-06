@@ -10,13 +10,14 @@
 
 <body>
     <h1 class="mb-5">Create Category</h1>
-    <form method="post" asp-controller="categories" asp-action="store">
+    <form method="post" asp-controller="categories" asp-action="update">
+        <input asp-for="Id" hidden/>
         <div class="mb-3">
             <label for="name" class="form-label">Category Name</label>
             <input asp-for="Name" type="text" class="form-control" id="name">
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-success">Save</button>
+        <button type="submit" class="btn btn-primary">Edit</button>
     </form>
 </body>
 

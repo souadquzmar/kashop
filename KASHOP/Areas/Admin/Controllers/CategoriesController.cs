@@ -43,5 +43,20 @@ namespace KASHOP.Areas.Admin.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+        public IActionResult Edit(int id)
+        {
+            var category = context.Categories.Find(id);
+            return View(category);
+        }
+        public IActionResult Update (Category request)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Categories.Update(request);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View("Edit",request);
+        }
     }
 }
