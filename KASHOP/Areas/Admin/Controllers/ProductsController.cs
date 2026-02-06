@@ -59,5 +59,12 @@ namespace KASHOP.Areas.Admin.Controllers
             }
             return View("Create",request);
         }
+        public IActionResult Remove(int id)
+        {
+            var product = context.Products.Find(id);
+            context.Remove(product);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
