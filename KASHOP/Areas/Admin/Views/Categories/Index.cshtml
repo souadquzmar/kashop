@@ -1,0 +1,65 @@
+@model List<Category>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+            <div class="col-md-12">
+                @if (!Model.Any())
+                {
+                    <div class="alert alert-warning">No Categories</div>
+                }
+                else
+                {
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title">Bordered Table</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-bordered" role="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px" scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var category in Model)
+                                    {
+                                        <tr class="align-middle">
+                                            <td>@category.Id</td>
+                                            <td>@category.Name</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            <ul class="pagination pagination-sm m-0 float-end">
+                                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">»</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!--end::Row-->
+    </div>
+</body>
+
+</html>

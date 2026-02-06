@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KASHOP.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace KASHOP.Data
 {
     public class ApplicationDbContext : DbContext
     {
+        public DbSet<Category> Categories {get; set;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
