@@ -5,7 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using KASHOP.Data;
 using KASHOP.Models;
+using KASHOP.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace KASHOP.Areas.Admin.Controllers
@@ -16,7 +18,20 @@ namespace KASHOP.Areas.Admin.Controllers
         ApplicationDbContext context = new ApplicationDbContext();
        public IActionResult Index()
         {
-            return View();
+            var products = context.Products.Include(p=>p.Category).ToList();
+            var productsVM = new List<ProductsViewModel>();
+            foreach (var product in products)
+            {
+                var vm = new ProductsViewModel
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Image = $"/images/{product.Image}",
+                    CategoryName = product.Category.Name
+                };
+                productsVM.Add(vm);
+            }
+            return View(productsVM);
         }
         public IActionResult Create()
         {

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace KASHOP.Models
 {
@@ -20,8 +21,8 @@ namespace KASHOP.Models
         public double Rate {get; set;}
         public string? Image {get; set;}
         public int CategoryId {get; set;}
-        [NotMapped]
-        public Category? Category {get; set;}
+        [ValidateNever]
+        public Category Category {get; set;}
 
     }
 }

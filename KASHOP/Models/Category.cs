@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace KASHOP.Models
 {
@@ -16,6 +17,7 @@ namespace KASHOP.Models
         [MaxLength(50)]
         [MinLength(3)]
         public string Name {get; set;}
-        public List<Product>? Products {get; set;}
+        [ValidateNever]
+        public List<Product> Products {get; set;}
     }
 }
