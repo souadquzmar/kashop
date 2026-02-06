@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using KASHOP.Data;
+using KASHOP.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace KASHOP.Areas.Admin.Controllers
@@ -17,6 +19,22 @@ namespace KASHOP.Areas.Admin.Controllers
         {
             var categories = context.Categories.ToList();
             return View(categories);
+        }
+
+        public IActionResult Create()
+        {
+            return View(new Category());
+        }
+
+        public IActionResult Store(Category request)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Categories.Add(request);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View("Create",request);
         }
     }
 }

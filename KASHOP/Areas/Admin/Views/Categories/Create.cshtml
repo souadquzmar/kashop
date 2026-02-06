@@ -1,0 +1,27 @@
+@model Category
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="mb-5">Create Category</h1>
+    <form method="post" asp-controller="categories" asp-action="store">
+        <div class="mb-3">
+            <label for="name" class="form-label">Category Name</label>
+            <input asp-for=Name type="text" class="form-control" id="name" value="@Model.Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+
+</html>
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}
